@@ -40,7 +40,7 @@ class _AddPage extends State<AddPage> {
 
   @override
   void dispose() {
-    textController.dispose(); // ❗ обязательно
+    textController.dispose();
     super.dispose();
   }
 }

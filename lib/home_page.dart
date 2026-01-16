@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:todo_1/addPage.dart';
-import 'package:todo_1/toDoList.dart';
+import 'package:todo_1/add_page.dart';
+import 'package:todo_1/todo_list.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({super.key});
@@ -10,8 +10,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List toDoList = [
-    ['сделать дз', false],
+  List   toDoList = [
+    ['сделать дз', false, ],
     ['сделать todo лист', false]
   ];
 
@@ -20,8 +20,6 @@ class _HomePageState extends State<HomePage> {
       toDoList[index][1] = !toDoList[index][1];
     });
   }
-
-  
 
   void navigateToAddPage(BuildContext context) async {
     final result = await Navigator.of(context).push(MaterialPageRoute(builder: (_) => AddPage()));
@@ -42,8 +40,9 @@ class _HomePageState extends State<HomePage> {
         itemCount: toDoList.length,
         itemBuilder: (BuildContext context, index) {
           return ToDoList(
-            todoName: toDoList[index][0],
-            todoDone: toDoList[index][1],
+            title: toDoList[index][0],
+            id: DateTime.now().millisecondsSinceEpoch.toString(),
+            isFinished: toDoList[index][1],
             onChanged: (value) => checkBoxChanged(index),
           );
         },
